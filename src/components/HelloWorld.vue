@@ -32,7 +32,11 @@
     }),
 
     mounted(){
-      window.$('#table_id').DataTable();
+      window.$('#table_id').DataTable({
+        bPaginate: false,
+        bInfo: false,
+        searching: false,
+      });
     }
   }
 </script>
