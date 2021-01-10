@@ -30,8 +30,6 @@
 </template>
 
 <script>
-  window.$ = window.jquery = require('jquery');
-  window.dt = require('datatables.net');
   import StaticChessBoard from '@/components/subcomponents/StaticChessBoard';
 
   export default {

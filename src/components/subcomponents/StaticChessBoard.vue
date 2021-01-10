@@ -1,5 +1,17 @@
 <template>
-    <table class="ma-auto" :style="`border: 2px solid ${borderColor}; backgroundColor: rgba(0,0,0,0.87);`">
+    <table id="table_id" class="ma-auto" :style="`border: 2px solid ${borderColor}; backgroundColor: rgba(0,0,0,0.87);`">
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
         <tr v-for="(n, rank) in 8" :key="rank">
             <td
                 v-for="(n, file) in 8" 
@@ -32,6 +44,8 @@
 <script>
 import ChessPieceImage from '@/components/subcomponents/ChessPieceImage';
 import goldenRatio from '@/static/GoldenRatio';
+window.$ = window.jquery = require('jquery');
+window.dt = require('datatables.net');
 
 export default {
     name: 'StaticChessBoard',
@@ -67,6 +81,12 @@ export default {
         this.$nextTick(() => {
             window.addEventListener('resize', this.onResize);
         });
+        const table = window.$('#table_id').DataTable({
+            bPaginate: false,
+            bInfo: false,
+            searching: false,
+        });
+        table.columns.adjust().draw();
     },
 
     beforeDestroy() { 
@@ -76,5 +96,7 @@ export default {
 </script>
 
 <style>
-
+    #table_id > tbody, #table_id > thead {
+        display: none;
+    }
 </style>
