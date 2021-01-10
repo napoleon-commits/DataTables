@@ -86,7 +86,9 @@ export default {
             bInfo: false,
             searching: false,
         });
-        table.columns.adjust().draw();
+        setTimeout(()=>{
+            table.columns.adjust().draw();
+        }, 625);
     },
 
     beforeDestroy() { 
